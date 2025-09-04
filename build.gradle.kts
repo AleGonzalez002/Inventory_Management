@@ -27,7 +27,7 @@ tasks.withType<JavaCompile> {
 
 application {
     mainModule.set("sv.uees.inventory_management")
-    mainClass.set("sv.uees.inventory_management.HelloApplication")
+    mainClass.set("sv.uees.inventory_management.app.Launcher")
 }
 
 javafx {
