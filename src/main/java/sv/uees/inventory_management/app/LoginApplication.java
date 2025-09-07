@@ -7,14 +7,14 @@ import javafx.stage.Stage;
 import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class LoginApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 500, 500);
+        FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("/view/login.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
 
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
-        stage.setTitle("Ventana");
+        stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
     }
