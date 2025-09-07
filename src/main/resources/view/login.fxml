@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="600.0" prefWidth="500.0" stylesheets="@../css/bootstrapfx.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sv.uees.inventory_management.controller.LoginController">
+
+    <center>
+        <VBox alignment="CENTER" maxWidth="400.0" spacing="20.0" styleClass="card">
+            <padding>
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            </padding>
+
+            <!-- Header -->
+            <VBox alignment="CENTER" spacing="10.0">
+                <Label styleClass="h2" text="Inventory Management" />
+                <Label styleClass="text-muted" text="Iniciar Sesión en el Sistema" />
+            </VBox>
+
+            <!-- Form -->
+            <VBox spacing="15.0">
+                <VBox spacing="5.0">
+                    <Label styleClass="form-label" text="Usuario" />
+                    <TextField promptText="Ingrese su usuario" styleClass="form-control" />
+                </VBox>
+
+                <VBox spacing="5.0">
+                    <Label styleClass="form-label" text="Contraseña" />
+                    <PasswordField promptText="Ingrese su contraseña" styleClass="form-control" />
+                </VBox>
+            </VBox>
+
+            <Button maxWidth="1.7976931348623157E308" onAction="#onLoginButtonClick" prefHeight="40.0" text="INICIAR SESIÓN">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-primary" />
+                    <String fx:value="btn-lg" />
+                </styleClass>
+            </Button>
+
+            <HBox alignment="CENTER">
+                <Label styleClass="text-muted" text="¿Olvidó su contraseña? " />
+                <Label styleClass="link-primary" text="Recuperar" />
+            </HBox>
+
+            <Label fx:id="errorText" styleClass="text-danger" />
+
+        </VBox>
+    </center>
+
+</BorderPane>
