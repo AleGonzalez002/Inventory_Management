@@ -1,4 +1,4 @@
 package sv.uees.inventory_management.utils;
 
-public class Connection {
+public class DatabaseConnection {
 }
