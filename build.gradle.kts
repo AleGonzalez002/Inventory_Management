@@ -40,6 +40,7 @@ dependencies {
         exclude(group = "org.openjfx")
     }
     implementation("org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0")
+    implementation ("mysql:mysql-connector-java:8.0.33")
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }
