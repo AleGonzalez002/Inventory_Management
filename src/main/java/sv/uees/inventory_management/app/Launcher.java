@@ -1,25 +1,30 @@
 package sv.uees.inventory_management.app;
 
+import javafx.application.Application;
 import sv.uees.inventory_management.utils.DatabaseConnection;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 public class Launcher {
     public static void main(String[] args) {
-        Connection connection = null;
-        try {
-            connection = DatabaseConnection.connect();
-            if (connection != null) {
-                System.out.println("Database connection successful.");
-            }
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.out.println("Error: Failed to connect to the database.");
-                }
-            }
+        // Primero probar la conexión a la base de datos
+        if (probarConexionBD()) {
+            // Si la conexión es exitosa, lanzar la aplicación JavaFX
+            Application.launch(LoginApplication.class, args);
+        } else {
+            // Si falla la conexión, mostrar mensaje y salir
+            System.err.println("No se pudo conectar a la base de datos. La aplicación se cerrará.");
+            System.exit(1); // Salir con código de error
+        }
+    }
+
+    private static boolean probarConexionBD() {
+        System.out.println("Probando conexión a la base de datos...");
+        try (Connection connection = DatabaseConnection.connect()) {
+            System.out.println("Conexión a BD establecida correctamente");
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error de conexión: " + e.getMessage());
+            return false;
         }
     }
 }
