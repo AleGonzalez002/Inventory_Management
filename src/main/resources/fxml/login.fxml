@@ -6,7 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="500.0" stylesheets="@../css/bootstrapfx.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sv.uees.inventory_management.controller.LoginController">
+<BorderPane prefHeight="600.0" prefWidth="500.0" stylesheets="@../css/bootstrapfx.css"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sv.uees.inventory_management.controller.LoginController">
 
     <center>
         <VBox alignment="CENTER" maxWidth="400.0" spacing="20.0" styleClass="card">
@@ -24,16 +26,17 @@
             <VBox spacing="15.0">
                 <VBox spacing="5.0">
                     <Label styleClass="form-label" text="Usuario" />
-                    <TextField promptText="Ingrese su usuario" styleClass="form-control" />
+                    <TextField fx:id="txtUsername" promptText="Ingrese su usuario" styleClass="form-control" />
                 </VBox>
 
                 <VBox spacing="5.0">
                     <Label styleClass="form-label" text="Contraseña" />
-                    <PasswordField promptText="Ingrese su contraseña" styleClass="form-control" />
+                    <PasswordField fx:id="txtPassword" promptText="Ingrese su contraseña" styleClass="form-control" />
                 </VBox>
             </VBox>
 
-            <Button maxWidth="1.7976931348623157E308" onAction="#onLoginButtonClick" prefHeight="40.0" text="INICIAR SESIÓN">
+            <Button maxWidth="1.7976931348623157E308" onAction="#onLoginButtonClick"
+                    prefHeight="40.0" text="INICIAR SESIÓN">
                 <styleClass>
                     <String fx:value="btn" />
                     <String fx:value="btn-primary" />
