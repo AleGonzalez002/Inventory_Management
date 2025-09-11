@@ -23,28 +23,20 @@ public class LoginController {
 
     @FXML
     protected void onLoginButtonClick() {
-        // Limpiar mensaje de error anterior
         errorText.setText("");
 
-        // Obtener valores de los campos
         String username = txtUsername.getText().trim();
         String password = txtPassword.getText().trim();
 
-        // Validar que no estén vacíos
         if (username.isEmpty() || password.isEmpty()) {
             errorText.setText("Por favor, complete todos los campos");
             return;
         }
 
         try {
-            // Intentar autenticar
             if (loginService.autenticarUsuario(username, password)) {
-                // Login exitoso
                 mostrarAlerta("¡Éxito!", "Login realizado correctamente", AlertType.INFORMATION);
-                // Aquí abrirías la ventana principal:
-                // abrirVentanaPrincipal();
             } else {
-                // Login fallido
                 errorText.setText("Credenciales incorrectas");
                 limpiarCampos();
             }

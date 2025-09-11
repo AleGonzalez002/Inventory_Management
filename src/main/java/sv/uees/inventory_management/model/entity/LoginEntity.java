@@ -2,10 +2,10 @@ package sv.uees.inventory_management.model.entity;
 
 public class LoginEntity {
     private int id;
-    private String username;    // Esto será el "nombre" de tu tabla
+    private String username;
     private String password;
-    private String nombre;      // Esto también será el "nombre"
-    private boolean activo = true; // Valor por defecto
+    private String nombre;
+    private boolean activo = true;
 
     // Constructores
     public LoginEntity() {}
@@ -13,7 +13,7 @@ public class LoginEntity {
     public LoginEntity(String username, String password) {
         this.username = username;
         this.password = password;
-        this.nombre = username; // Como no tienes nombre_completo, usamos el mismo
+        this.nombre = username;
     }
 
     // Getters y setters
@@ -23,7 +23,7 @@ public class LoginEntity {
     public String getUsername() { return username; }
     public void setUsername(String username) {
         this.username = username;
-        this.nombre = username; // Mantenemos sincronizados
+        this.nombre = username;
     }
 
     public String getPassword() { return password; }
@@ -32,7 +32,7 @@ public class LoginEntity {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) {
         this.nombre = nombre;
-        this.username = nombre; // Mantenemos sincronizados
+        this.username = nombre;
     }
 
     public boolean isActivo() { return activo; }
