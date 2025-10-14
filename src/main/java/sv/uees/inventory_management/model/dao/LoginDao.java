@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 public class LoginDao {
 
     public LoginEntity validarUsuario(String nombre, String contraseña) {
-        String sql = "SELECT id, nombre, contraseña FROM usuarios WHERE nombre = ? AND contraseña = ?";
+        String sql = "SELECT id_usuario, usuario, contrasena FROM usuarios WHERE usuario = ? AND contrasena = ?";
 
         try (Connection conn = DatabaseConnection.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -21,9 +21,9 @@ public class LoginDao {
 
             if (rs.next()) {
                 LoginEntity usuario = new LoginEntity();
-                usuario.setId(rs.getInt("id"));
-                usuario.setUsername(rs.getString("nombre"));
-                usuario.setNombre(rs.getString("nombre"));
+                usuario.setId(rs.getInt("id_usuario"));
+                usuario.setUsername(rs.getString("usuario"));
+                usuario.setNombre(rs.getString("usuario"));
                 return usuario;
             }
 
