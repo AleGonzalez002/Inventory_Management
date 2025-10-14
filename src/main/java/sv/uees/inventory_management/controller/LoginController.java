@@ -2,6 +2,7 @@ package sv.uees.inventory_management.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import sv.uees.inventory_management.model.entity.LoginEntity;
 import sv.uees.inventory_management.service.LoginService;
 import sv.uees.inventory_management.utils.DatabaseConnection;
 import java.sql.Connection;
@@ -48,7 +49,9 @@ public class LoginController {
 
         try {
             if (loginService.autenticarUsuario(username, password)) {
-                mostrarAlerta("¡Éxito!", "Login realizado correctamente", Alert.AlertType.INFORMATION);
+                LoginEntity loginEntity = new LoginEntity();
+                loginEntity.setUsuario(username);
+                mostrarAlerta("¡Éxito!", "Bienvendio al sistema " + username, Alert.AlertType.INFORMATION);
             } else {
                 errorText.setText("Credenciales incorrectas");
                 limpiarCampos();

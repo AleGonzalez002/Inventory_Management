@@ -8,23 +8,22 @@ import java.sql.ResultSet;
 
 public class LoginDao {
 
-    public LoginEntity validarUsuario(String nombre, String contraseña) {
+    public LoginEntity validarUsuario(String usuario, String contrasena) {
         String sql = "SELECT id_usuario, usuario, contrasena FROM usuarios WHERE usuario = ? AND contrasena = ?";
 
         try (Connection conn = DatabaseConnection.connect();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1, nombre);
-            pstmt.setString(2, contraseña);
+            pstmt.setString(1, usuario);
+            pstmt.setString(2, contrasena);
 
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                LoginEntity usuario = new LoginEntity();
-                usuario.setId(rs.getInt("id_usuario"));
-                usuario.setUsuario(rs.getString("usuario"));
-                usuario.setNombre(rs.getString("usuario"));
-                return usuario;
+                LoginEntity Usuario = new LoginEntity();
+                Usuario.setId(rs.getInt("id_usuario"));
+                Usuario.setUsuario(rs.getString("usuario"));
+                return Usuario;
             }
 
         } catch (Exception e) {

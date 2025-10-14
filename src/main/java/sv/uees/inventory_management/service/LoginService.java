@@ -10,7 +10,7 @@ public class LoginService {
         if (usuario == null || usuario.trim().isEmpty()) return false;
         if (contrasena == null || contrasena.trim().isEmpty()) return false;
 
-        LoginEntity Usuario = loginDao.validarUsuario(usuario, contrasena);
-        return Usuario != null;
+        LoginEntity Login = loginDao.validarUsuario(usuario, contrasena);
+        return Login != null;
     }
 }
