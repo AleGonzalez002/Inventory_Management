@@ -2,7 +2,7 @@ package sv.uees.inventory_management.model.entity;
 
 public class LoginEntity {
     private int id;
-    private String username;
+    private String usuario;
     private String password;
     private String nombre;
     private boolean activo = true;
@@ -10,20 +10,19 @@ public class LoginEntity {
     // Constructores
     public LoginEntity() {}
 
-    public LoginEntity(String username, String password) {
-        this.username = username;
+    public LoginEntity(String usuario, String password, String nombre) {
+        this.usuario = usuario;
         this.password = password;
-        this.nombre = username;
+        this.nombre = nombre;
     }
 
     // Getters y setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
-    public String getUsername() { return username; }
-    public void setUsername(String username) {
-        this.username = username;
-        this.nombre = username;
+    public String getUsuario() { return usuario; }
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getPassword() { return password; }
@@ -32,7 +31,6 @@ public class LoginEntity {
     public String getNombre() { return nombre; }
     public void setNombre(String nombre) {
         this.nombre = nombre;
-        this.username = nombre;
     }
 
     public boolean isActivo() { return activo; }

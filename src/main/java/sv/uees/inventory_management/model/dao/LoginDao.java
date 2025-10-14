@@ -22,7 +22,7 @@ public class LoginDao {
             if (rs.next()) {
                 LoginEntity usuario = new LoginEntity();
                 usuario.setId(rs.getInt("id_usuario"));
-                usuario.setUsername(rs.getString("usuario"));
+                usuario.setUsuario(rs.getString("usuario"));
                 usuario.setNombre(rs.getString("usuario"));
                 return usuario;
             }

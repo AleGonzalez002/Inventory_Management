@@ -6,11 +6,11 @@ import sv.uees.inventory_management.model.entity.LoginEntity;
 public class LoginService {
     private final LoginDao loginDao = new LoginDao();
 
-    public boolean autenticarUsuario(String nombre, String contraseña) {
-        if (nombre == null || nombre.trim().isEmpty()) return false;
-        if (contraseña == null || contraseña.trim().isEmpty()) return false;
+    public boolean autenticarUsuario(String usuario, String contrasena) {
+        if (usuario == null || usuario.trim().isEmpty()) return false;
+        if (contrasena == null || contrasena.trim().isEmpty()) return false;
 
-        LoginEntity usuario = loginDao.validarUsuario(nombre, contraseña);
-        return usuario != null;
+        LoginEntity Usuario = loginDao.validarUsuario(usuario, contrasena);
+        return Usuario != null;
     }
 }
