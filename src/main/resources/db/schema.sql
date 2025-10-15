@@ -1,4 +1,5 @@
-CREATE DATABASE IF NOT EXISTS inventory_system;
+DROP DATABASE IF EXISTS inventory_system;
+CREATE DATABASE inventory_system;
 USE inventory_system;
 
 CREATE TABLE categorias (
@@ -28,7 +29,7 @@ CREATE TABLE entradas (
     id_entrada INT AUTO_INCREMENT PRIMARY KEY,
     id_producto INT NOT NULL,
     id_proveedor INT,
-    fecha DATE DEFAULT CURRENT_DATE,
+    fecha DATE DEFAULT (CURDATE()),
     cantidad INT NOT NULL,
     costo DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto),
@@ -38,7 +39,7 @@ CREATE TABLE entradas (
 CREATE TABLE salidas (
     id_salida INT AUTO_INCREMENT PRIMARY KEY,
     id_producto INT NOT NULL,
-    fecha DATE DEFAULT CURRENT_DATE,
+    fecha DATE DEFAULT (CURDATE()),
     cantidad INT NOT NULL,
     destino VARCHAR(100),
     FOREIGN KEY (id_producto) REFERENCES productos(id_producto)
@@ -55,7 +56,7 @@ CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     usuario VARCHAR(50) UNIQUE NOT NULL,
-    contrasena VARCHAR(255) NOT NULL,
+    contrasena VARCHAR(255) BINARY NOT NULL,
     rol ENUM('admin','empleado') DEFAULT 'empleado',
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

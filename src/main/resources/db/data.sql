@@ -37,5 +37,5 @@ INSERT INTO inventario (id_producto, stock_actual) VALUES
 (4, 45);
 
 INSERT INTO usuarios (nombre, usuario, contrasena, rol) VALUES
-('Administrador General', 'admin', '123', 'admin'),
-('Empleado', 'empleado', '123', 'empleado');
+('Administrador General', 'admin', 'Admin', 'admin'),
+('Empleado', 'empleado', 'Empleado', 'empleado');

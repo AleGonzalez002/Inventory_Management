@@ -2,10 +2,8 @@ package sv.uees.inventory_management.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import sv.uees.inventory_management.model.entity.LoginEntity;
 import sv.uees.inventory_management.service.LoginService;
-import sv.uees.inventory_management.utils.DatabaseConnection;
-import java.sql.Connection;
+import sv.uees.inventory_management.utils.DatabaseStatusChecker;
 
 public class LoginController {
 
@@ -20,20 +18,14 @@ public class LoginController {
 
     private final LoginService loginService = new LoginService();
 
-    // ✅ Se ejecuta automáticamente al abrir el login.fxml
     @FXML
     public void initialize() {
-        probarConexionBD();
+        // Alerta gráfica si falla la conexión
+        DatabaseStatusChecker.showStatusAlert();
+        // Solo imprime en consola el estado de la base
+        DatabaseStatusChecker.printStatus();
     }
 
-    private void probarConexionBD() {
-        try (Connection connection = DatabaseConnection.connect()) {
-            System.out.println("✅ Conexión a la base de datos establecida correctamente");
-        } catch (Exception e) {
-            mostrarAlerta("Error de conexión", "No se pudo conectar a la base de datos.", Alert.AlertType.ERROR);
-            System.err.println("❌ Error de conexión: " + e.getMessage());
-        }
-    }
 
     @FXML
     protected void onLoginButtonClick() {
@@ -43,35 +35,48 @@ public class LoginController {
         String password = txtPassword.getText().trim();
 
         if (username.isEmpty() || password.isEmpty()) {
-            errorText.setText("Por favor, complete todos los campos");
+            showErrorMessage("Por favor, complete todos los campos");
             return;
         }
 
         try {
-            if (loginService.autenticarUsuario(username, password)) {
-                LoginEntity loginEntity = new LoginEntity();
-                loginEntity.setUsuario(username);
-                mostrarAlerta("¡Éxito!", "Bienvendio al sistema " + username, Alert.AlertType.INFORMATION);
+            boolean authenticated = loginService.authenticateUser(username, password);
+
+            if (authenticated) {
+                showAlertMessage("Inicio de sesión exitoso", "Bienvenido al sistema, " + username);
+                clearFields();
+                // TODO: Cambiar escena al dashboard
             } else {
-                errorText.setText("Credenciales incorrectas");
-                limpiarCampos();
+                showErrorMessage("Credenciales incorrectas");
+                clearFields();
             }
+
         } catch (Exception e) {
-            errorText.setText("Error de conexión con la base de datos");
-            e.printStackTrace();
+            // Alerta gráfica si falla la conexión o cualquier error
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error de conexión");
+            alert.setHeaderText("No se pudo conectar a la base de datos");
+            alert.setContentText("Por favor, contacte al soporte técnico.");
+            alert.showAndWait();
+
+            e.printStackTrace(); // útil solo en desarrollo
         }
     }
 
-    private void limpiarCampos() {
+    private void clearFields() {
         txtPassword.clear();
-        txtPassword.requestFocus();
+        txtUsername.requestFocus();
     }
 
-    private void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
-        Alert alert = new Alert(tipo);
-        alert.setTitle(titulo);
+    private void showErrorMessage(String message) {
+        errorText.setText(message);
+    }
+
+    private void showAlertMessage(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
         alert.setHeaderText(null);
-        alert.setContentText(mensaje);
+        alert.setContentText(message);
         alert.showAndWait();
     }
 

@@ -2,34 +2,37 @@ package sv.uees.inventory_management.model.dao;
 
 import sv.uees.inventory_management.model.entity.LoginEntity;
 import sv.uees.inventory_management.utils.DatabaseConnection;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class LoginDao {
 
-    public LoginEntity validarUsuario(String usuario, String contrasena) {
-        String sql = "SELECT id_usuario, usuario, contrasena FROM usuarios WHERE usuario = ? AND contrasena = ?";
+    public LoginEntity validateUser(String username, String password) throws SQLException {
+        String query = "SELECT id_usuario, nombre, usuario, rol, fecha_registro " +
+                "FROM usuarios " +
+                "WHERE usuario = ? AND contrasena = ?"; // username EXACTO, password EXACTO
 
-        try (Connection conn = DatabaseConnection.connect();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (Connection connection = DatabaseConnection.connect();
+             PreparedStatement statement = connection.prepareStatement(query)) {
 
-            pstmt.setString(1, usuario);
-            pstmt.setString(2, contrasena);
+            statement.setString(1, username); // NO toLowerCase()
+            statement.setString(2, password); // Case-sensitive
 
-            ResultSet rs = pstmt.executeQuery();
-
-            if (rs.next()) {
-                LoginEntity Usuario = new LoginEntity();
-                Usuario.setId(rs.getInt("id_usuario"));
-                Usuario.setUsuario(rs.getString("usuario"));
-                return Usuario;
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    LoginEntity user = new LoginEntity();
+                    user.setIdUsuario(rs.getInt("id_usuario"));
+                    user.setNombre(rs.getString("nombre"));
+                    user.setUsuario(rs.getString("usuario"));
+                    user.setRol(rs.getString("rol"));
+                    user.setFechaRegistro(rs.getTimestamp("fecha_registro"));
+                    return user;
+                }
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
-        return null;
+        return null; // usuario o contraseña incorrectos
     }
 }
