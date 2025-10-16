@@ -1,87 +1,70 @@
 package sv.uees.inventory_management.controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import sv.uees.inventory_management.service.LoginService;
 import sv.uees.inventory_management.utils.DatabaseStatusChecker;
 
 public class LoginController {
 
-    @FXML
-    private TextField txtUsername;
-
-    @FXML
-    private PasswordField txtPassword;
-
-    @FXML
-    private Label errorText;
+    @FXML private TextField txtUsername;
+    @FXML private PasswordField txtPassword;
+    @FXML private Label errorText;
 
     private final LoginService loginService = new LoginService();
 
     @FXML
     public void initialize() {
-        // Alerta gráfica si falla la conexión
-        DatabaseStatusChecker.showStatusAlert();
-        // Solo imprime en consola el estado de la base
+        // Verifica la conexión al iniciar
+        DatabaseStatusChecker.showAlertIfDisconnected();
         DatabaseStatusChecker.printStatus();
     }
 
-
     @FXML
     protected void onLoginButtonClick() {
-        errorText.setText("");
+        clearError();
 
         String username = txtUsername.getText().trim();
         String password = txtPassword.getText().trim();
 
         if (username.isEmpty() || password.isEmpty()) {
-            showErrorMessage("Por favor, complete todos los campos");
+            showError("Por favor, complete todos los campos");
             return;
         }
 
         try {
             boolean authenticated = loginService.authenticateUser(username, password);
-
             if (authenticated) {
-                showAlertMessage("Inicio de sesión exitoso", "Bienvenido al sistema, " + username);
                 clearFields();
-                // TODO: Cambiar escena al dashboard
+                //Cambiar escena al dashboard desde aqui pls
             } else {
-                showErrorMessage("Credenciales incorrectas");
+                showError("Credenciales incorrectas");
                 clearFields();
             }
-
         } catch (Exception e) {
-            // Alerta gráfica si falla la conexión o cualquier error
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error de conexión");
-            alert.setHeaderText("No se pudo conectar a la base de datos");
-            alert.setContentText("Por favor, contacte al soporte técnico.");
-            alert.showAndWait();
-
-            e.printStackTrace(); // útil solo en desarrollo
+            e.printStackTrace();
+            showError("Ocurrió un error inesperado. Contacte al soporte técnico.");
         }
     }
 
     private void clearFields() {
+        txtUsername.clear();
         txtPassword.clear();
         txtUsername.requestFocus();
     }
 
-    private void showErrorMessage(String message) {
+    private void showError(String message) {
         errorText.setText(message);
     }
 
-    private void showAlertMessage(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+    private void clearError() {
+        errorText.setText("");
     }
 
     @FXML
     private void onFieldClick() {
-        errorText.setText("");
+        clearError();
     }
 }

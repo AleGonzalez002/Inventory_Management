@@ -10,29 +10,33 @@ import java.sql.SQLException;
 
 public class LoginDao {
 
+    private static final String QUERY_VALIDATE_USER =
+            "SELECT id_usuario, nombre, usuario, rol, fecha_registro " + "FROM usuarios " + "WHERE usuario = ? AND contrasena = ?";
+
+    //Valida un usuario en la base de datos
     public LoginEntity validateUser(String username, String password) throws SQLException {
-        String query = "SELECT id_usuario, nombre, usuario, rol, fecha_registro " +
-                "FROM usuarios " +
-                "WHERE usuario = ? AND contrasena = ?"; // username EXACTO, password EXACTO
-
         try (Connection connection = DatabaseConnection.connect();
-             PreparedStatement statement = connection.prepareStatement(query)) {
+             PreparedStatement stmt = connection.prepareStatement(QUERY_VALIDATE_USER)) {
 
-            statement.setString(1, username); // NO toLowerCase()
-            statement.setString(2, password); // Case-sensitive
+            stmt.setString(1, username);
+            stmt.setString(2, password);
 
-            try (ResultSet rs = statement.executeQuery()) {
+            try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    LoginEntity user = new LoginEntity();
-                    user.setIdUsuario(rs.getInt("id_usuario"));
-                    user.setNombre(rs.getString("nombre"));
-                    user.setUsuario(rs.getString("usuario"));
-                    user.setRol(rs.getString("rol"));
-                    user.setFechaRegistro(rs.getTimestamp("fecha_registro"));
-                    return user;
+                    return mapToLoginEntity(rs);
                 }
             }
         }
-        return null; // usuario o contraseña incorrectos
+        return null;
+    }
+
+    private LoginEntity mapToLoginEntity(ResultSet rs) throws SQLException {
+        LoginEntity user = new LoginEntity();
+        user.setIdUsuario(rs.getInt("id_usuario"));
+        user.setNombre(rs.getString("nombre"));
+        user.setUsuario(rs.getString("usuario"));
+        user.setRol(rs.getString("rol"));
+        user.setFechaRegistro(rs.getTimestamp("fecha_registro"));
+        return user;
     }
 }

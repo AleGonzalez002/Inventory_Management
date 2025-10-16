@@ -3,6 +3,7 @@ package sv.uees.inventory_management.model.entity;
 import java.sql.Timestamp;
 
 public class LoginEntity {
+
     private int idUsuario;
     private String nombre;
     private String usuario;
@@ -10,14 +11,16 @@ public class LoginEntity {
     private String rol;
     private Timestamp fechaRegistro;
 
-    // Constructors
+    // Constructor vacío
     public LoginEntity() {}
 
+    // Constructor para login rápido
     public LoginEntity(String usuario, String contrasena) {
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
 
+    // Constructor completo
     public LoginEntity(int idUsuario, String nombre, String usuario, String rol, Timestamp fechaRegistro) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
@@ -27,53 +30,23 @@ public class LoginEntity {
     }
 
     // Getters & Setters
-    public int getIdUsuario() {
-        return idUsuario;
-    }
+    public int getIdUsuario() { return idUsuario; }
+    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; }
 
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
-    }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
-    public String getNombre() {
-        return nombre;
-    }
+    public String getUsuario() { return usuario; }
+    public void setUsuario(String usuario) { this.usuario = usuario; }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public String getContrasena() { return contrasena; }
+    public void setContrasena(String contrasena) { this.contrasena = contrasena; }
 
-    public String getUsuario() {
-        return usuario;
-    }
+    public String getRol() { return rol; }
+    public void setRol(String rol) { this.rol = rol; }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public Timestamp getFechaRegistro() {
-        return fechaRegistro;
-    }
-
-    public void setFechaRegistro(Timestamp fechaRegistro) {
-        this.fechaRegistro = fechaRegistro;
-    }
+    public Timestamp getFechaRegistro() { return fechaRegistro; }
+    public void setFechaRegistro(Timestamp fechaRegistro) { this.fechaRegistro = fechaRegistro; }
 
     @Override
     public String toString() {

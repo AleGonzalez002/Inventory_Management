@@ -6,11 +6,11 @@ INSERT INTO categorias (nombre, descripcion) VALUES
 ('Alimentos', 'Comestibles de larga duración'),
 ('Papelería', 'Artículos de oficina y papelería');
 
-INSERT INTO productos (nombre, descripcion, id_categoria, precio, stock) VALUES
-('Coca-Cola 500ml', 'Refresco gaseoso', 1, 0.80, 50),
-('Jabón líquido', 'Jabón para limpieza de manos', 2, 1.20, 30),
-('Arroz 1kg', 'Grano básico empacado', 3, 1.10, 100),
-('Cuaderno universitario', 'Cuaderno 100 hojas', 4, 2.50, 40);
+INSERT INTO productos (nombre, descripcion, id_categoria, precio) VALUES
+('Coca-Cola 500ml', 'Refresco gaseoso', 1, 0.80),
+('Jabón líquido', 'Jabón para limpieza de manos', 2, 1.20),
+('Arroz 1kg', 'Grano básico empacado', 3, 1.10),
+('Cuaderno universitario', 'Cuaderno 100 hojas', 4, 2.50);
 
 INSERT INTO proveedores (nombre, telefono, direccion) VALUES
 ('Distribuidora El Sol', '7123-4567', 'Av. Central #123'),

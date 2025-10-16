@@ -14,7 +14,6 @@ CREATE TABLE productos (
     descripcion VARCHAR(255),
     id_categoria INT,
     precio DECIMAL(10,2) NOT NULL,
-    stock INT DEFAULT 0,
     FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
 );
 
@@ -55,7 +54,7 @@ CREATE TABLE inventario (
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    usuario VARCHAR(50) UNIQUE NOT NULL,
+    usuario VARCHAR(50) BINARY UNIQUE NOT NULL,
     contrasena VARCHAR(255) BINARY NOT NULL,
     rol ENUM('admin','empleado') DEFAULT 'empleado',
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP

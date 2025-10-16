@@ -26,12 +26,12 @@
             <VBox spacing="15.0">
                 <VBox spacing="5.0">
                     <Label styleClass="form-label" text="Usuario" />
-                    <TextField fx:id="txtUsername" promptText="Ingrese su usuario" styleClass="form-control" />
+                    <TextField fx:id="txtUsername" promptText="Ingrese su usuario" styleClass="form-control" onKeyTyped="#onFieldClick" />
                 </VBox>
 
                 <VBox spacing="5.0">
                     <Label styleClass="form-label" text="Contraseña" />
-                    <PasswordField fx:id="txtPassword" promptText="Ingrese su contraseña" styleClass="form-control" />
+                    <PasswordField fx:id="txtPassword" promptText="Ingrese su contraseña" styleClass="form-control" onKeyTyped="#onFieldClick"/>
                 </VBox>
             </VBox>
 
