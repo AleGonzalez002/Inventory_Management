@@ -1,20 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.geometry.Insets?>
-<?import sv.uees.inventory_management.controller.DashboardController?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" spacing="20.0"
-      xmlns:fx="http://javafx.com/fxml/1"
-      xmlns="http://javafx.com/javafx/21"
-      fx:controller="sv.uees.inventory_management.controller.DashboardController">
+<BorderPane prefHeight="650.0" prefWidth="1000.0" stylesheets="@../css/bootstrapfx.css"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sv.uees.inventory_management.controller.DashboardController">
 
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-    </padding>
+    <left>
+        <VBox prefWidth="200.0" spacing="10.0" style="-fx-background-color: #343a40;" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="15.0" left="10.0" right="10.0" top="20.0" />
+            </padding>
 
-    <Label text="¡Bienvenido al Dashboard!" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
-    <Label fx:id="statusLabel" text="Cargando..." />
+            <Label styleClass="h4, text-white" text="Inventario" />
 
-</VBox>
+            <Separator />
+
+            <Button maxWidth="1.7976931348623157E308"  text="📦 Productos">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-dark" />
+                    <String fx:value="active" />
+                </styleClass>
+            </Button>
+
+            <Button maxWidth="1.7976931348623157E308"  text="📂 Categorías">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-dark" />
+                </styleClass>
+            </Button>
+
+            <Button maxWidth="1.7976931348623157E308"  text="👥 Usuarios">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-dark" />
+                </styleClass>
+            </Button>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentArea" alignment="TOP_LEFT" style="-fx-background-color: #e9ecef;">
+            <VBox spacing="20.0">
+                <padding>
+                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                </padding>
+
+                <Label styleClass="h2" text="Bienvenido al Sistema de Inventario" />
+
+                <VBox styleClass="card" prefHeight="200.0">
+
+                    <Label styleClass="h4" text="Métricas Clave" />
+                    <Label text="Aquí se cargará el contenido de la vista seleccionada (Productos, Categorías, etc.)." />
+                </VBox>
+
+            </VBox>
+        </StackPane>
+    </center>
+
+</BorderPane>

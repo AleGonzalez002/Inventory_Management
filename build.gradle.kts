@@ -2,8 +2,8 @@ plugins {
     java
     application
     id("org.javamodularity.moduleplugin") version "1.8.15"
-    id("org.openjfx.javafxplugin") version "0.0.13"
-    id("org.beryx.jlink") version "2.25.0"
+    id("org.openjfx.javafxplugin") version "0.1.0"
+    id("org.beryx.jlink") version "2.26.0"
 }
 
 group = "sv.uees"
@@ -13,7 +13,10 @@ repositories {
     mavenCentral()
 }
 
-val junitVersion = "5.12.1"
+val junitVersion = "5.13.4"
+val javaFxVersion = "22.0.1"
+val formsfxVersion = "11.6.0"
+val bootstrapfxVersion = "0.4.0"
 
 java {
     toolchain {
@@ -31,16 +34,18 @@ application {
 }
 
 javafx {
-    version = "21.0.8"
+    version = javaFxVersion
     modules = listOf("javafx.controls", "javafx.fxml")
 }
 
 dependencies {
-    implementation("com.dlsc.formsfx:formsfx-core:11.6.0") {
+    implementation("com.google.protobuf:protobuf-java:4.28.2")
+    implementation("com.dlsc.formsfx:formsfx-core:${formsfxVersion}") {
         exclude(group = "org.openjfx")
     }
-    implementation("org.kordamp.bootstrapfx:bootstrapfx-core:0.4.0")
-    implementation("com.mysql:mysql-connector-j:8.3.0")
+    implementation("org.kordamp.bootstrapfx:bootstrapfx-core:${bootstrapfxVersion}")
+    implementation("com.mysql:mysql-connector-j:8.4.0")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
 }

@@ -63,24 +63,22 @@ public class LoginController {
         }
     }
 
-    // --- Lógica de Cambio de Escena (Dashboard) ---
+    // --- Lógica de Cambio de Escena ---
     private void changeToDashboardScene() throws IOException {
-        // 1. Obtiene la referencia a la ventana (Stage) actual usando un componente
+        // Obtiene la referencia a la ventana (Stage) actual usando un componente
         Stage currentStage = (Stage) txtUsername.getScene().getWindow();
 
-        // 2. Carga el FXML de la nueva vista (DashboardView.fxml)
-        // La ruta debe ser relativa al classpath de tu proyecto.
+        // Carga el FXML de la nueva vista (DashboardView.fxml)
         FXMLLoader fxmlLoader = new FXMLLoader(
                 getClass().getResource("/view/DashboardView.fxml")
         );
         Scene dashboardScene = new Scene(fxmlLoader.load());
 
-        // 3. Establece la nueva escena y muestra la ventana
+        // Establece la nueva escena y muestra la ventana
         currentStage.setScene(dashboardScene);
         currentStage.setTitle("Inventario - Dashboard Principal");
         currentStage.show();
     }
-    // ----------------------------------------------
 
     // --- Métodos Auxiliares ---
     private void clearFields() {
