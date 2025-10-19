@@ -9,10 +9,10 @@ import org.kordamp.bootstrapfx.BootstrapFX;
 import java.io.IOException;
 import java.util.Objects;
 
-public class LoginApplication extends Application {
+public class MainApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(LoginApplication.class.getResource("/fxml/LoginView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApp.class.getResource("/view/LoginView.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add(BootstrapFX.bootstrapFXStylesheet());
         stage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/transparent_icon.png"))));
