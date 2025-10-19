@@ -1,40 +1,34 @@
 USE inventory_system;
 
-INSERT INTO categorias (nombre, descripcion) VALUES
-('Bebidas', 'Refrescos, jugos y agua'),
-('Limpieza', 'Productos para limpieza y desinfección'),
-('Alimentos', 'Comestibles de larga duración'),
-('Papelería', 'Artículos de oficina y papelería');
+INSERT INTO categorias(nombre, descripcion) VALUES
+('Electrónica', 'Productos electrónicos'),
+('Muebles', 'Muebles para oficina y hogar');
 
-INSERT INTO productos (nombre, descripcion, id_categoria, precio) VALUES
-('Coca-Cola 500ml', 'Refresco gaseoso', 1, 0.80),
-('Jabón líquido', 'Jabón para limpieza de manos', 2, 1.20),
-('Arroz 1kg', 'Grano básico empacado', 3, 1.10),
-('Cuaderno universitario', 'Cuaderno 100 hojas', 4, 2.50);
+INSERT INTO proveedores(nombre, telefono, direccion) VALUES
+('Proveedor A', '12345678', 'Calle 1'),
+('Proveedor B', '87654321', 'Calle 2');
 
-INSERT INTO proveedores (nombre, telefono, direccion) VALUES
-('Distribuidora El Sol', '7123-4567', 'Av. Central #123'),
-('Productos Limpios SA', '7890-2345', 'Col. San Martín'),
-('Alimentos La Granja', '7654-9876', 'Zona Industrial'),
-('Papeles y Más', '7012-8899', 'Calle Reforma 56');
+INSERT INTO sucursales(nombre, direccion) VALUES
+('Sucursal Centro', 'Av. Central 123'),
+('Sucursal Norte', 'Av. Norte 456');
 
-INSERT INTO entradas (id_producto, id_proveedor, fecha, cantidad, costo) VALUES
-(1, 1, '2025-10-01', 100, 0.60),
-(2, 2, '2025-10-02', 50, 0.90),
-(3, 3, '2025-10-03', 200, 0.85),
-(4, 4, '2025-10-04', 60, 1.90);
+INSERT INTO productos(nombre, descripcion, id_categoria, id_proveedor, precio) VALUES
+('Laptop', 'Laptop Gamer', 1, 1, 1200.00),
+('Escritorio', 'Escritorio Oficina', 2, 2, 250.00);
 
-INSERT INTO salidas (id_producto, fecha, cantidad, destino) VALUES
-(1, '2025-10-05', 20, 'Tienda Central'),
-(2, '2025-10-06', 10, 'Sucursal Norte'),
-(3, '2025-10-06', 30, 'Restaurante El Buen Sabor'),
-(4, '2025-10-07', 15, 'Oficina Principal');
+INSERT INTO inventario(id_producto, id_sucursal, stock) VALUES
+(1, 1, 10),
+(1, 2, 5),
+(2, 1, 15),
+(2, 2, 8);
 
-INSERT INTO inventario (id_producto, stock_actual) VALUES
-(1, 80),
-(2, 40),
-(3, 170),
-(4, 45);
+INSERT INTO entradas(id_producto, id_sucursal, id_proveedor, cantidad, costo) VALUES
+(1, 1, 1, 10, 1100.00),
+(2, 2, 2, 8, 230.00);
+
+INSERT INTO salidas(id_producto, id_sucursal, cantidad, destino) VALUES
+(1, 1, 2, 'Venta Cliente A'),
+(2, 2, 3, 'Venta Cliente B');
 
 INSERT INTO usuarios (nombre, usuario, contrasena, rol) VALUES
 ('Administrador General', 'admin', 'Admin', 'admin'),

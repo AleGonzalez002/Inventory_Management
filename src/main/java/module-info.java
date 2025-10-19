@@ -4,6 +4,7 @@ module sv.uees.inventory_management {
     requires java.sql;
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
+    requires javafx.graphics;
 
     opens sv.uees.inventory_management.app to javafx.fxml;
     opens sv.uees.inventory_management.controller to javafx.fxml;
