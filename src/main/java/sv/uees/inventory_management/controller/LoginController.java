@@ -109,7 +109,7 @@ public class LoginController {
 
         currentStage.setScene(dashboardScene);
         currentStage.setTitle("");
-        currentStage.show();
+        currentStage.centerOnScreen();
     }
 
     private void changeToRegisterScene() throws IOException {

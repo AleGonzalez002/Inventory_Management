@@ -2,6 +2,7 @@ package sv.uees.inventory_management.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -12,52 +13,47 @@ import sv.uees.inventory_management.model.entity.UserEntity;
 import java.io.IOException;
 
 /**
- * Controlador principal del sistema. Gestiona la navegación lateral,
- * la carga dinámica de vistas y el cierre de sesión.
+ * Controlador principal del sistema (Dashboard).
+ * Gestiona la navegación lateral, el estado del usuario y el cierre de sesión.
  */
 public class DashboardController {
 
-    // Controles FXML de la barra lateral
+    // --- Componentes FXML ---
     @FXML private Label lblUsername;
     @FXML private Label lblRole;
     @FXML private Label statusLabel;
-    @FXML private StackPane contentArea; // Área central para cargar las vistas
+    @FXML private StackPane contentArea; // Área central para cargar las vistas dinámicas
 
-    // Botones de navegación (para manejar su estado, si es necesario)
+    // Botones de navegación (para manejar su estado/permisos)
     @FXML private Button btnProducts;
     @FXML private Button btnCategories;
     @FXML private Button btnUsers;
 
-    // Objeto para mantener el estado del usuario autenticado (MUY IMPORTANTE)
+    // --- Estado de la Aplicación ---
     private UserEntity authenticatedUser;
 
-    /**
-     * Método de inicialización llamado automáticamente por JavaFX.
-     * Aquí se puede cargar contenido inicial o realizar configuraciones.
-     */
     @FXML
     public void initialize() {
-        // Por ahora, solo puedes cargar el Dashboard, no el DashboardController,
-        // desde el LoginController. Por eso, el usuario se setea después.
-        // Aquí iría la carga de la vista principal por defecto (Ej: DashboardMetrics.fxml)
-        System.out.println("DashboardController inicializado. Esperando datos de usuario...");
+        // Lógica de inicialización (ej. cargar la vista de bienvenida por defecto)
+        // Por ahora, solo imprime en consola.
+        System.out.println("DashboardController inicializado.");
     }
 
     /**
-     * Método para inyectar el usuario autenticado desde el LoginController.
-     * Este método debe ser llamado inmediatamente después de cargar el DashboardView.fxml.
+     * Inyecta el usuario autenticado desde el LoginController y actualiza la UI.
+     * Este método debe llamarse después de cargar DashboardView.fxml.
      * @param user El UserEntity autenticado.
      */
     public void setAuthenticatedUser(UserEntity user) {
         this.authenticatedUser = user;
         if (user != null) {
             // Actualizar la interfaz con la información del usuario
-            lblUsername.setText(user.getUsername());
+            lblUsername.setText("👤 " + user.getUsername());
             lblRole.setText(user.getRole());
 
-            // Lógica de permisos (ocultar botones si el rol es 'empleado')
+            // Lógica de permisos (ej. deshabilitar botón de Usuarios para 'empleados')
             if ("empleado".equalsIgnoreCase(user.getRole())) {
-                btnUsers.setDisable(true); // Ejemplo de restricción
+                btnUsers.setDisable(true);
             }
         }
     }
@@ -68,28 +64,59 @@ public class DashboardController {
     @FXML
     protected void onProductsClick() {
         System.out.println("Navegando a la gestión de Productos.");
-        // Lógica para cargar ProductsView.fxml en contentArea
+        // Carga la vista de Productos en el área central
+        loadView("/view/ProductView.fxml");
     }
 
     @FXML
     protected void onCategoriesClick() {
         System.out.println("Navegando a la gestión de Categorías.");
-        // Lógica para cargar CategoriesView.fxml en contentArea
+        // loadView("/sv/uees/inventory_management/view/CategoriesView.fxml");
     }
 
     @FXML
     protected void onUsersClick() {
         System.out.println("Navegando a la gestión de Usuarios.");
-        // Lógica para cargar UsersView.fxml en contentArea
+        // loadView("/sv/uees/inventory_management/view/UsersView.fxml");
     }
+
+    // --- Lógica de Carga de Vistas (Función Principal) ---
+
+    /**
+     * Carga un archivo FXML dado y lo coloca en el StackPane central (contentArea).
+     * @param fxmlPath La ruta del archivo FXML (ej: "/sv/uees/inventory_management/view/ProductsView.fxml")
+     */
+    private void loadView(String fxmlPath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlPath));
+            Node view = loader.load();
+
+            // 1. Limpiar el área central
+            contentArea.getChildren().clear();
+
+            // 2. Agregar la nueva vista
+            contentArea.getChildren().add(view);
+
+            System.out.println("Vista cargada con éxito: " + fxmlPath);
+
+        } catch (IOException e) {
+            System.err.println("Error al cargar la vista FXML: " + fxmlPath);
+            e.printStackTrace();
+            contentArea.getChildren().clear();
+            contentArea.getChildren().add(new Label("Error: No se pudo cargar la vista. Revise la ruta del FXML."));
+        }
+    }
+
 
     // --- Cierre de Sesión ---
 
     @FXML
     protected void onLogoutClick() {
-        System.out.println("Cerrando sesión para el usuario: " + authenticatedUser.getUsername());
+        if (authenticatedUser != null) {
+            System.out.println("Cerrando sesión para: " + authenticatedUser.getUsername());
+        }
 
-        // 1. Limpiar el estado de usuario (opcional, pero buena práctica)
+        // 1. Limpiar el estado (opcional)
         this.authenticatedUser = null;
 
         // 2. Regresar a la pantalla de Login
@@ -97,7 +124,7 @@ public class DashboardController {
             changeToLoginScene();
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error crítico al cargar la vista de Login después del cierre de sesión.");
+            System.err.println("Error crítico al cargar la vista de Login.");
         }
     }
 
@@ -105,16 +132,19 @@ public class DashboardController {
      * Carga la escena de la vista de inicio de sesión (LoginView.fxml).
      */
     private void changeToLoginScene() throws IOException {
-        // Usa un control FXML para obtener la ventana actual (Stage)
+        // Usamos un control FXML para obtener la ventana actual (Stage)
         Stage currentStage = (Stage) lblUsername.getScene().getWindow();
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/sv/uees/inventory_management/view/LoginView.fxml")
+                getClass().getResource("/view/LoginView.fxml")
         );
         Scene loginScene = new Scene(fxmlLoader.load());
 
         currentStage.setScene(loginScene);
-        currentStage.setTitle("Sistema de Inventario - Inicio de Sesión");
+        currentStage.setTitle("");
+
+        // Al regresar al login, centramos la ventana
+        currentStage.centerOnScreen();
         currentStage.show();
     }
 }

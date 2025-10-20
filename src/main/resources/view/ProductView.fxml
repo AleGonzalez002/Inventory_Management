@@ -1,14 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<VBox spacing="20.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sv.uees.inventory_management.controller.ProductController">
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
 
-</AnchorPane>
+    <Label styleClass="h3" text="Gestión de Productos" />
+    <Label styleClass="text-muted" text="Lista completa y acciones de inventario." />
+
+    <TableView fx:id="productsTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn prefWidth="100.0" text="ID" />
+            <TableColumn prefWidth="200.0" text="Nombre" />
+            <TableColumn prefWidth="150.0" text="Categoría" />
+            <TableColumn prefWidth="100.0" text="Stock" />
+            <TableColumn prefWidth="150.0" text="Precio Unitario" />
+            <TableColumn prefWidth="150.0" text="Acciones" />
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+
+</VBox>
