@@ -5,60 +5,74 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="650.0" prefWidth="1000.0" stylesheets="@../css/bootstrapfx.css"
-            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="sv.uees.inventory_management.controller.DashboardController">
+<BorderPane prefHeight="1000.0" prefWidth="1920.0" stylesheets="@../css/bootstrapfx.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sv.uees.inventory_management.controller.DashboardController">
 
     <left>
-        <VBox prefWidth="200.0" spacing="10.0" style="-fx-background-color: #343a40;" BorderPane.alignment="CENTER">
+        <VBox prefWidth="200.0" spacing="15.0" style="-fx-background-color: #212529;" BorderPane.alignment="CENTER">
             <padding>
-                <Insets bottom="15.0" left="10.0" right="10.0" top="20.0" />
+                <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
             </padding>
 
-            <Label styleClass="h4, text-white" text="Inventario" />
+            <VBox alignment="CENTER_LEFT" spacing="2.0">
+                <Label prefHeight="27.0" prefWidth="158.0" style="-fx-text-fill: white;" styleClass="h3" text="INVENTORY" />
+                <Label prefHeight="26.0" prefWidth="83.0" style="-fx-text-fill: #adb5bd; -fx-font-size: 20px;" text="System" />
+            </VBox>
 
-            <Separator />
+            <VBox spacing="5.0">
 
-            <Button maxWidth="1.7976931348623157E308"  text="📦 Productos">
-                <styleClass>
-                    <String fx:value="btn" />
-                    <String fx:value="btn-dark" />
-                    <String fx:value="active" />
-                </styleClass>
-            </Button>
+                <Button fx:id="btnProducts" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onProductsClick" prefHeight="60.0" prefWidth="170.0" text=" 📦  Productos">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-secondary" />
+                        <String fx:value="text-white" />
+                    </styleClass>
+                    
+                </Button>
 
-            <Button maxWidth="1.7976931348623157E308"  text="📂 Categorías">
-                <styleClass>
-                    <String fx:value="btn" />
-                    <String fx:value="btn-dark" />
-                </styleClass>
-            </Button>
+                <Button fx:id="btnCategories" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onCategoriesClick" prefHeight="60.0" prefWidth="170.0" text=" 📁  Categorías">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-secondary" />
+                        <String fx:value="text-white" />
+                    </styleClass>
 
-            <Button maxWidth="1.7976931348623157E308"  text="👥 Usuarios">
-                <styleClass>
-                    <String fx:value="btn" />
-                    <String fx:value="btn-dark" />
-                </styleClass>
-            </Button>
+                </Button>
+
+                <Button fx:id="btnUsers" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onUsersClick" prefHeight="60.0" prefWidth="170.0" text=" 👥  Usuarios">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-secondary" />
+                        <String fx:value="text-white" />
+                    </styleClass>
+
+                </Button>
+            </VBox>
+
+            <VBox VBox.vgrow="ALWAYS" />
+
+            <VBox spacing="15.0">
+
+                <VBox spacing="2.0">
+                    <Label fx:id="lblUsername" style="-fx-text-fill: white; -fx-font-size: 15px;" text="👤 {Nombre de Usuario}" />
+                    <Label fx:id="lblRole" style="-fx-text-fill: #adb5bd; -fx-font-size: 15px;" text="{Rol}" />
+                </VBox>
+
+                <Button alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onLogoutClick" prefHeight="50.0" prefWidth="170.0" text="🚪 Cerrar Sesión">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-outline-danger" />
+                    </styleClass>
+                </Button>
+
+                <Label fx:id="statusLabel" style="-fx-text-fill: #adb5bd; -fx-font-size: 15px;" text="Status: Conectado" />
+                <Label style="-fx-text-fill: #6c757d; -fx-font-size: 15px;" text="v1.0.0" />
+            </VBox>
         </VBox>
     </left>
 
     <center>
-        <StackPane fx:id="contentArea" alignment="TOP_LEFT" style="-fx-background-color: #e9ecef;">
-            <VBox spacing="20.0">
-                <padding>
-                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                </padding>
-
-                <Label styleClass="h2" text="Bienvenido al Sistema de Inventario" />
-
-                <VBox styleClass="card" prefHeight="200.0">
-
-                    <Label styleClass="h4" text="Métricas Clave" />
-                    <Label text="Aquí se cargará el contenido de la vista seleccionada (Productos, Categorías, etc.)." />
-                </VBox>
-
-            </VBox>
+        <StackPane fx:id="contentArea" style="-fx-background-color: #f8f9fa;">
+            <Label style="-fx-font-size: 16px; -fx-text-fill: #495057;" text="👋 Seleccione una opción del menú lateral para comenzar." />
         </StackPane>
     </center>
 

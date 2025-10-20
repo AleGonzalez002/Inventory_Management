@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="650.0" prefWidth="500.0" stylesheets="@../css/bootstrapfx.css"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="sv.uees.inventory_management.controller.RegisterController">
+
+    <center>
+        <VBox alignment="CENTER" maxWidth="400.0" spacing="20.0" styleClass="card">
+            <padding>
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+            </padding>
+
+            <VBox alignment="CENTER" spacing="10.0">
+                <Label styleClass="h2" text="Registro de Usuario" />
+                <Label styleClass="text-muted" text="Cree una cuenta en el sistema" />
+            </VBox>
+
+            <VBox spacing="15.0">
+
+                <VBox spacing="5.0">
+                    <Label styleClass="form-label" text="Nombre Completo" />
+                    <TextField fx:id="txtName" promptText="Ingrese su nombre completo" styleClass="form-control" onKeyTyped="#onFieldClick" />
+                </VBox>
+
+                <VBox spacing="5.0">
+                    <Label styleClass="form-label" text="Usuario" />
+                    <TextField fx:id="txtUsername" promptText="Defina su usuario" styleClass="form-control" onKeyTyped="#onFieldClick" />
+                </VBox>
+
+                <VBox spacing="5.0">
+                    <Label styleClass="form-label" text="Contraseña" />
+                    <PasswordField fx:id="txtPassword" promptText="Defina una contraseña" styleClass="form-control" onKeyTyped="#onFieldClick"/>
+                </VBox>
+
+                <VBox spacing="5.0">
+                    <Label styleClass="form-label" text="Confirmar Contraseña" />
+                    <PasswordField fx:id="txtConfirmPassword" promptText="Confirme su contraseña" styleClass="form-control" onKeyTyped="#onFieldClick"/>
+                </VBox>
+
+            </VBox>
+
+            <Button maxWidth="1.7976931348623157E308" onAction="#onRegisterButtonClick"
+                    prefHeight="40.0" text="REGISTRARSE">
+                <styleClass>
+                    <String fx:value="btn" />
+                    <String fx:value="btn-primary" />
+                    <String fx:value="btn-lg" />
+                </styleClass>
+            </Button>
+
+            <HBox alignment="CENTER">
+                <Label styleClass="text-muted" text="¿Ya tiene cuenta? " />
+                <Label styleClass="link-primary" text="Iniciar Sesión" onMouseClicked="#onLoginLinkClick" />
+            </HBox>
+
+            <Label fx:id="errorText" styleClass="text-danger" />
+
+        </VBox>
+    </center>
+
+</BorderPane>
