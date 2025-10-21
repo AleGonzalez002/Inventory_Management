@@ -72,7 +72,7 @@ public class DashboardController {
     @FXML
     protected void onCategoriesClick() {
         System.out.println("Navegando a la gestión de Categorías.");
-        // loadView("/sv/uees/inventory_management/view/CategoriesView.fxml");
+        loadView("/view/CategoryView.fxml");
     }
 
     @FXML
