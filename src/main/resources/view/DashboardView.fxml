@@ -8,7 +8,7 @@
 <BorderPane prefHeight="1000.0" prefWidth="1920.0" stylesheets="@../css/bootstrapfx.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sv.uees.inventory_management.controller.DashboardController">
 
     <left>
-        <VBox alignment="CENTER" prefWidth="200.0" spacing="15.0" style="-fx-background-color: #212529;" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefWidth="250.0" spacing="15.0" style="-fx-background-color: #284663;" BorderPane.alignment="CENTER">
             <padding>
                 <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
             </padding>
@@ -99,8 +99,8 @@
                     </styleClass>
                 </Button>
 
-                <Label fx:id="statusLabel" style="-fx-text-fill: #adb5bd; -fx-font-size: 15px;" text="Status: Conectado" />
-                <Label style="-fx-text-fill: #6c757d; -fx-font-size: 15px;" text="v1.0.0" />
+                <Label fx:id="statusLabel" style="-fx-text-fill:white; -fx-font-size: 15px;" text="Status: Conectado" />
+                <Label style="-fx-text-fill: #adb5bd; -fx-font-size: 15px;" text="v1.0.0" />
             </VBox>
         </VBox>
     </left>
