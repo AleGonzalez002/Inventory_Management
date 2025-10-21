@@ -45,7 +45,7 @@
             </VBox>
 
             <Button maxWidth="1.7976931348623157E308" onAction="#onRegisterButtonClick"
-                    prefHeight="40.0" text="REGISTRARSE">
+                    prefHeight="40.0" style="-fx-background-color: #223C57; -fx-text-fill: white;" text="REGISTRARSE">
                 <styleClass>
                     <String fx:value="btn" />
                     <String fx:value="btn-primary" />

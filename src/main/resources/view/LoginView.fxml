@@ -33,7 +33,7 @@
             </VBox>
 
             <Button maxWidth="1.7976931348623157E308" onAction="#onLoginButtonClick"
-                    prefHeight="40.0" text="INICIAR SESIÓN">
+                    prefHeight="40.0" style="-fx-background-color: #223C57; -fx-text-fill: white;" text="INICIAR SESIÓN">
                 <styleClass>
                     <String fx:value="btn" />
                     <String fx:value="btn-primary" />
