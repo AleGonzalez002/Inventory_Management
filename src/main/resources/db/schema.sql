@@ -82,3 +82,16 @@ UNION ALL
 SELECT s.id_salida, s.id_producto, s.id_sucursal, p.nombre, s.cantidad, 'Salida', s.fecha
 FROM salidas s
 JOIN productos p ON s.id_producto = p.id_producto;
+
+SELECT 
+    id_movimiento, 
+    id_producto, 
+    id_sucursal, 
+    producto, 
+    cantidad, 
+    tipo, 
+    fecha
+FROM 
+    vista_movimientos
+ORDER BY 
+    fecha DESC;

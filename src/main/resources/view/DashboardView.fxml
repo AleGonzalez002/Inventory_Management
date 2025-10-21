@@ -19,6 +19,13 @@
             </VBox>
 
             <VBox spacing="5.0">
+                <Button fx:id="btnDashboard" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onDashboardClick" prefHeight="60.0" prefWidth="170.0" text=" 🏠  Dashboard">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-secondary" />
+                        <String fx:value="text-white" />
+                    </styleClass>
+                </Button>
 
                 <Button fx:id="btnProducts" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onProductsClick" prefHeight="60.0" prefWidth="170.0" text=" 📦  Productos">
                     <styleClass>
@@ -26,7 +33,6 @@
                         <String fx:value="btn-secondary" />
                         <String fx:value="text-white" />
                     </styleClass>
-                    
                 </Button>
 
                 <Button fx:id="btnCategories" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onCategoriesClick" prefHeight="60.0" prefWidth="170.0" text=" 📁  Categorías">
@@ -35,7 +41,38 @@
                         <String fx:value="btn-secondary" />
                         <String fx:value="text-white" />
                     </styleClass>
+                </Button>
 
+                <Button fx:id="btnInbound" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onInboundClick" prefHeight="60.0" prefWidth="170.0" text=" 📥  Entradas">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-secondary" />
+                        <String fx:value="text-white" />
+                    </styleClass>
+                </Button>
+
+                <Button fx:id="btnOutbound" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onOutboundClick" prefHeight="60.0" prefWidth="170.0" text=" 📤  Salidas">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-secondary" />
+                        <String fx:value="text-white" />
+                    </styleClass>
+                </Button>
+
+                <Button fx:id="btnSuppliers" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onSuppliersClick" prefHeight="60.0" prefWidth="170.0" text=" 🚚  Proveedores">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-secondary" />
+                        <String fx:value="text-white" />
+                    </styleClass>
+                </Button>
+
+                <Button fx:id="btnReports" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onReportsClick" prefHeight="60.0" prefWidth="170.0" text=" 📈  Reportes">
+                    <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-secondary" />
+                        <String fx:value="text-white" />
+                    </styleClass>
                 </Button>
 
                 <Button fx:id="btnUsers" alignment="CENTER_LEFT" maxWidth="Infinity" onAction="#onUsersClick" prefHeight="60.0" prefWidth="170.0" text=" 👥  Usuarios">
@@ -44,10 +81,8 @@
                         <String fx:value="btn-secondary" />
                         <String fx:value="text-white" />
                     </styleClass>
-
                 </Button>
             </VBox>
-
             <VBox VBox.vgrow="ALWAYS" />
 
             <VBox spacing="15.0">

@@ -23,6 +23,7 @@ public class DashboardController {
     @FXML private Label lblRole;
     @FXML private Label statusLabel;
     @FXML private StackPane contentArea; // Área central para cargar las vistas dinámicas
+    @FXML private Button btnSuppliers;
 
     // Botones de navegación (para manejar su estado/permisos)
     @FXML private Button btnProducts;
@@ -80,7 +81,36 @@ public class DashboardController {
         // loadView("/sv/uees/inventory_management/view/UsersView.fxml");
     }
 
-    // --- Lógica de Carga de Vistas (Función Principal) ---
+    @FXML
+    protected void onDashboardClick() {
+        System.out.println("Navegando a Dashboard Summary.");
+        // loadView("/sv/uees/inventory_management/view/DashboardSummaryView.fxml");
+    }
+
+    @FXML
+    protected void onInboundClick() {
+        System.out.println("Navegando a Registro de Entradas (Ingreso de Stock).");
+        // loadView("/sv/uees/inventory_management/view/InboundView.fxml");
+    }
+
+    @FXML
+    protected void onOutboundClick() {
+        System.out.println("Navegando a Registro de Salidas (Egreso de Stock).");
+        // loadView("/sv/uees/inventory_management/view/OutboundView.fxml");
+    }
+
+    @FXML
+    protected void onReportsClick() {
+        System.out.println("Navegando a la generación de Reportes.");
+        // loadView("/sv/uees/inventory_management/view/ReportsView.fxml");
+    }
+
+    // Añade el método de acción
+    @FXML
+    protected void onSuppliersClick() {
+        System.out.println("Navegando a la gestión de Proveedores.");
+        // loadView("/sv/uees/inventory_management/view/SuppliersView.fxml");
+    }
 
     /**
      * Carga un archivo FXML dado y lo coloca en el StackPane central (contentArea).

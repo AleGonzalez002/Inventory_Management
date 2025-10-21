@@ -1,4 +1,4 @@
 package sv.uees.inventory_management.service;
 
-public class MovementService {
+public class ReportService {
 }
