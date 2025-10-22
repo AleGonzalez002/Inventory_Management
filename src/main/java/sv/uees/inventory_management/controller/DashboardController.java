@@ -66,55 +66,55 @@ public class DashboardController {
     protected void onProductsClick() {
         System.out.println("Navegando a la gestión de Productos.");
         // Carga la vista de Productos en el área central
-        loadView("/view/ProductView.fxml");
+        loadView("/sv/uees/inventory_management/view/ProductView.fxml");
     }
 
     @FXML
     protected void onCategoriesClick() {
         System.out.println("Navegando a la gestión de Categorías.");
-        loadView("/view/CategoryView.fxml");
+        loadView("/sv/uees/inventory_management/view/CategoryView.fxml");
     }
 
     @FXML
     protected void onUsersClick() {
         System.out.println("Navegando a la gestión de Usuarios.");
-        // loadView("/sv/uees/inventory_management/view/UsersView.fxml");
+        loadView("/sv/uees/inventory_management/sv.uees.inventory_management.view/UsersView.fxml");
     }
 
     @FXML
     protected void onDashboardClick() {
         System.out.println("Navegando a Dashboard Summary.");
-        // loadView("/sv/uees/inventory_management/view/DashboardSummaryView.fxml");
+        loadView("/sv/uees/inventory_management/sv.uees.inventory_management.view/DashboardSummaryView.fxml");
     }
 
     @FXML
     protected void onInboundClick() {
         System.out.println("Navegando a Registro de Entradas (Ingreso de Stock).");
-        // loadView("/sv/uees/inventory_management/view/InboundView.fxml");
+        loadView("/sv/uees/inventory_management/view/EntryView.fxml");
     }
 
     @FXML
     protected void onOutboundClick() {
         System.out.println("Navegando a Registro de Salidas (Egreso de Stock).");
-        // loadView("/sv/uees/inventory_management/view/OutboundView.fxml");
+        loadView("/sv/uees/inventory_management/sv.uees.inventory_management.view/OutboundView.fxml");
     }
 
     @FXML
     protected void onReportsClick() {
         System.out.println("Navegando a la generación de Reportes.");
-        // loadView("/sv/uees/inventory_management/view/ReportsView.fxml");
+        loadView("/sv/uees/inventory_management/sv.uees.inventory_management.view/ReportsView.fxml");
     }
 
     // Añade el método de acción
     @FXML
     protected void onSuppliersClick() {
         System.out.println("Navegando a la gestión de Proveedores.");
-        // loadView("/sv/uees/inventory_management/view/SuppliersView.fxml");
+        loadView("/sv/uees/inventory_management/sv.uees.inventory_management.view/SuppliersView.fxml");
     }
 
     /**
      * Carga un archivo FXML dado y lo coloca en el StackPane central (contentArea).
-     * @param fxmlPath La ruta del archivo FXML (ej: "/sv/uees/inventory_management/view/ProductsView.fxml")
+     * @param fxmlPath La ruta del archivo FXML (ej: "/sv/uees/inventory_management/sv.uees.inventory_management.view/ProductsView.fxml")
      */
     private void loadView(String fxmlPath) {
         try {
@@ -166,7 +166,7 @@ public class DashboardController {
         Stage currentStage = (Stage) lblUsername.getScene().getWindow();
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/view/LoginView.fxml")
+                getClass().getResource("/sv/uees/inventory_management/view/LoginView.fxml")
         );
         Scene loginScene = new Scene(fxmlLoader.load());
 

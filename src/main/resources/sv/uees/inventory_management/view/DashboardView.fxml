@@ -14,7 +14,7 @@
             </padding>
 
             <VBox alignment="CENTER_LEFT" spacing="2.0">
-                <Label prefHeight="27.0" prefWidth="158.0" style="-fx-text-fill: white;" styleClass="h3" text="INVENTORY" />
+                <Label prefHeight="36.0" prefWidth="180.0" style="-fx-text-fill: white;" styleClass="h2" text="INVENTORY" />
                 <Label prefHeight="26.0" prefWidth="83.0" style="-fx-text-fill: #adb5bd; -fx-font-size: 20px;" text="System" />
             </VBox>
 

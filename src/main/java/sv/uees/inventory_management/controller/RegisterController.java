@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import sv.uees.inventory_management.model.entity.UserEntity;
-import sv.uees.inventory_management.service.UserService;
+import sv.uees.inventory_management.model.service.UserService;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -118,7 +118,7 @@ public class RegisterController {
         Stage currentStage = (Stage) errorText.getScene().getWindow();
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/view/LoginView.fxml")
+                getClass().getResource("/sv/uees/inventory_management/view/LoginView.fxml")
         );
         Scene loginScene = new Scene(fxmlLoader.load());
 

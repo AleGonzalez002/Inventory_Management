@@ -1,4 +1,4 @@
-package sv.uees.inventory_management.service;
+package sv.uees.inventory_management.model.service;
 
 
 import sv.uees.inventory_management.model.dao.CategoryDao;

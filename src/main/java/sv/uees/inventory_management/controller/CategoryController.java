@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import sv.uees.inventory_management.model.entity.CategoryEntity;
-import sv.uees.inventory_management.service.CategoryService;
+import sv.uees.inventory_management.model.service.CategoryService;
 
 import java.util.List;
 

@@ -89,3 +89,25 @@ INSERT INTO salidas(id_producto, id_sucursal, cantidad, destino) VALUES
 INSERT INTO usuarios (nombre, usuario, contrasena, rol) VALUES
 ('Administrador General', 'admin', 'admin', 'admin'),
 ('Empleado', 'empleado', 'empleado', 'empleado');
+
+SELECT 
+    id_movimiento, 
+    id_producto, 
+    id_sucursal, 
+    producto, 
+    cantidad, 
+    tipo, 
+    fecha
+FROM 
+    vista_movimientos
+ORDER BY 
+    fecha DESC;
+
+SELECT * FROM categorias;
+SELECT * FROM proveedores;
+SELECT * FROM sucursales;
+SELECT * FROM usuarios;
+SELECT * FROM productos;
+SELECT * FROM inventario;
+SELECT * FROM entradas;
+SELECT * FROM salidas;

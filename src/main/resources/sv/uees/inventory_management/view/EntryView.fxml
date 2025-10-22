@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Button?>
+
+<VBox spacing="15.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sv.uees.inventory_management.controller.EntryController">
+
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+
+    <Label styleClass="h3" text="Historial de Entradas (Ingreso de Stock)" />
+    <Label styleClass="text-muted" text="Registro de todas las compras o ingresos de inventario." />
+
+    <ToolBar>
+        <items>
+            <Button fx:id="btnAddEntry" text="📥 Registrar Nueva Entrada" styleClass="btn-primary" />
+            <Button fx:id="btnViewEntry" text="🔍 Ver Detalle"  disable="true" />
+        </items>
+    </ToolBar>
+
+    <TableView fx:id="entriesTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colID" prefWidth="60.0" text="ID" />
+
+            <TableColumn fx:id="colFecha" prefWidth="150.0" text="Fecha" />
+
+            <TableColumn fx:id="colProducto" prefWidth="250.0" text="Producto" />
+
+            <TableColumn fx:id="colProveedor" prefWidth="180.0" text="Proveedor" />
+
+            <TableColumn fx:id="colSucursal" prefWidth="150.0" text="Sucursal Destino" />
+
+            <TableColumn fx:id="colCantidad" prefWidth="100.0" text="Cantidad" />
+
+            <TableColumn fx:id="colCosto" prefWidth="120.0" text="Costo Total" />
+
+        </columns>
+        <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+        </columnResizePolicy>
+    </TableView>
+
+</VBox>

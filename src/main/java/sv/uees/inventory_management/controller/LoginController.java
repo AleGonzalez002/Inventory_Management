@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import sv.uees.inventory_management.model.entity.UserEntity;
-import sv.uees.inventory_management.service.UserService;
+import sv.uees.inventory_management.model.service.UserService;
 // import sv.uees.inventory_management.utils.DatabaseStatusChecker; // Clase pendiente de implementación
 
 import java.io.IOException;
@@ -103,7 +103,7 @@ public class LoginController {
         Stage currentStage = (Stage) txtUsername.getScene().getWindow();
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/view/DashboardView.fxml")
+                getClass().getResource("/sv/uees/inventory_management/view/DashboardView.fxml")
         );
         Scene dashboardScene = new Scene(fxmlLoader.load());
 
@@ -116,7 +116,7 @@ public class LoginController {
         Stage currentStage = (Stage) txtUsername.getScene().getWindow();
 
         FXMLLoader fxmlLoader = new FXMLLoader(
-                getClass().getResource("/view/RegisterView.fxml")
+                getClass().getResource("/sv/uees/inventory_management/view/RegisterView.fxml")
         );
         Scene registerScene = new Scene(fxmlLoader.load());
 
